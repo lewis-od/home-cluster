@@ -2,4 +2,4 @@
 k3s_version: v1.21.3+k3s1
 ansible_user: pi
 master_ip: "{{ hostvars[groups['pi'][0]]['ansible_host'] | default(groups['pi'][0]) }}"
-extra_server_args: ""
+extra_server_args: "--kube-apiserver-arg service-node-port-range=1-65535"
