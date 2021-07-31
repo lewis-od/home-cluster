@@ -5,10 +5,11 @@ metadata:
   labels:
     app: homeassistant
 spec:
+  type: NodePort
   ports:
     - port: 8123
+      nodePort: 8123
       name: web
-  clusterIP: None
   selector:
     app: homeassistant
 ---
@@ -34,7 +35,7 @@ spec:
           image: ghcr.io/home-assistant/raspberrypi4-homeassistant:stable
           env:
             - name: TZ
-              value: UTC
+              value: Europe/London
           securityContext:
             privileged: true
           volumeMounts:
