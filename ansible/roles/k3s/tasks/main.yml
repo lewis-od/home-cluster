@@ -52,7 +52,7 @@
     path: /var/lib/rancher/k3s/server
     mode: "{{ p.stat.mode }}"
 
-- name: Create directory .kube
+- name: Create .kube directory
   file:
     path: ~{{ ansible_user }}/.kube
     state: directory
@@ -67,7 +67,7 @@
     owner: "{{ ansible_user }}"
     mode: "u=rw,g=,o="
 
-- name: Replace https://localhost:6443 by https://master-ip:6443
+- name: Replace https://localhost:6443 with https://master-ip:6443
   command: >-
     k3s kubectl config set-cluster default
       --server=https://{{ master_ip }}:6443
