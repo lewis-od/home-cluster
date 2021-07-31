@@ -1,0 +1,4 @@
+---
+- include: ip_forwarding.yml
+- include: iptables_legacy.yml
+- include: enable_cgroups.yml

@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ha-service
+  labels:
+    app: homeassistant
+spec:
+  ports:
+    - port: 8123
+      name: web
+  clusterIP: None
+  selector:
+    app: homeassistant
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ha-statefulset
+  labels:
+    app: homeassistant
+spec:
+  serviceName: ha-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homeassistant
+  template:
+    metadata:
+      labels:
+        app: homeassistant
+    spec:
+      containers:
+        - name: homeassistant
+          image: ghcr.io/home-assistant/raspberrypi4-homeassistant:stable
+          env:
+            - name: TZ
+              value: UTC
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: config
+              mountPath: /config
+      hostNetwork: true
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "local-path"
+        resources:
+          requests:
+            storage: 50Mi
