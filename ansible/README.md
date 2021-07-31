@@ -7,6 +7,9 @@ Ansible playbook to install k3s on raspberry pi
   - On pi: `sudo raspi-config`
 - Setup a static IP
   - On pi: `sudo vim /etc/dhcpcd.conf`
+- Setup Ansible inventory
+  - On laptop: `cp inventory/hosts.ini.example inventory/hosts.ini`
+  - Replace `192.168.1.150` with static IP of pi
 - Setup passwordless ssh
   - On laptop: `ssh-copy-id pi@192.168.1.150`
 - Run playbook to install k3s

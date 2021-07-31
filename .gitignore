@@ -1,2 +1,5 @@
+# macOS cruft
 .DS_Store
 
+# Inevntory file
+ansible/inventory/hosts.ini
