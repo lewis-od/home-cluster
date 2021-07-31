@@ -4,6 +4,8 @@ Ansible playbook to install [k3s] & [tailscale] on a raspberry pi
 [k3s]: https://k3s.io/
 [tailscale]: https://tailscale.com
 
+Mostly copied from [k3s-io/k3s-ansible](https://github.com/k3s-io/k3s-ansible)
+
 ## Instructions
 - Flash fresh version of Raspbian onto the pi
 - Setup networking & sshd
@@ -19,5 +21,6 @@ Ansible playbook to install [k3s] & [tailscale] on a raspberry pi
   - On laptop: `ansible-playbook site.yml -i inventory/hosts.ini`
 - Copy kubeconfig file from pi
   - On laptop: `scp pi@192.168.1.150 ~/.kube/config ./config-pi.yml`
+  - Merge contents of `config-pi.yml` with `~/.kube/config`
 - Sign in to tailscale:
   - On pi: `sudo tailscale up --advertise-exit-node`
