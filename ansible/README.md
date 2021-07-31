@@ -1,5 +1,5 @@
-# k3s
-Ansible playbook to install [k3s] & [tailscale] on a raspberry pi
+# Ansible Playbook
+Installs [k3s] & [tailscale] on a raspberry pi
 
 [k3s]: https://k3s.io/
 [tailscale]: https://tailscale.com
