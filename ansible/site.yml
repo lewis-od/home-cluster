@@ -5,3 +5,4 @@
   roles:
    - prereq
    - k3s
+   - tailscale
