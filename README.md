@@ -13,4 +13,4 @@ with k8s manifests for [Home Assistant] and [Pi-hole]
 
 ## Instructions
 Follow the instructions in [ansible/](ansible/README.md), then run
-`kubectl apply -f k8s`
+`kubectl apply -k k8s`
